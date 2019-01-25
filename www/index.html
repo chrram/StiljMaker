@@ -2,22 +2,64 @@
 <html>
     <head>
         <meta charset="utf-8">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
         <title>StijlMaker</title>
 		<style>
-			canvas {
-				border:1px solid #d3d3d3;
-				width:100%;
-				
-				background-color: white;
+			body{
+				text-align:center;
 			}
+			canvas {
+				margin-top:20px;
+				border:1px solid #d3d3d3;
+				width:70%;
+				background-color: white;
+				border: 20px solid #ccb089;
+				border-image-source: url('img/woodenframe.jpg');
+				border-image-slice: 50 65;
+			}
+			
+			.infoDiv{
+				margin-top:70px;
+				
+			}
+			.infoDiv h4{
+				margin-top:5px;
+			}
+			
+			.fa-arrow-up{
+				font-size:40px;
+				animation-name: arrowMoveUp;
+				animation-duration: 0.6s;
+				animation-iteration-count: infinite;
+				position: relative;
+			}
+			
+			@keyframes arrowMoveUp {
+				0% {
+					bottom:0px;
+				}
+				100% {
+					bottom:60px;
+				}
+			}
+			
 		</style>
     </head>
     <body>
 		<canvas id="canvas" height="300" onClick="drawEverything()"></canvas>
-		
-		
+		<div class="infoDiv">
+			<i class="fas fa-arrow-up"></i>
+			<h4>Click the canvas to get a new painting! :)</h4>
+		</div>
 	<script>
+		document.addEventListener("deviceready", onDeviceReady, false);
+
+		function onDeviceReady() {
+			drawEverything();
+		}
+				
+	
 		function getRandomColor() {
 			var color = '';
 			switch((Math.floor(Math.random() * 10) +1)) {
@@ -103,10 +145,10 @@
 			const context = canvas.getContext('2d');
 			context.clearRect(0, 0, canvas.width, canvas.height);
 			var rectangles = generateRectangles();
-			drawRectangles(rectangles);
-			
+			drawRectangles(rectangles);	
 		}
 		
+	
 	</script>
         <script type="text/javascript" src="cordova.js"></script>
     </body>
